@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import TariffCard from "./TariffCard";
 
@@ -180,9 +181,9 @@ export default function Body({ timerExpired }: BodyProps) {
                   )}
                 </button>
                 <span className="font-['Montserrat'] text-[16px] max-[1217px]:text-[12px]  max-[1217px]:w-[297px] max-[344px]:w-[252px] leading-[110%] font-normal text-[#CDCDCD]">
-                  Я согласен <a className="underline" href="">
+                  Я согласен <Link className="underline" href="/policy">
                     с офертой рекуррентных платежей и Политикой конфиденциальности 
-                    </a>
+                    </Link>
                 </span>
               </div>
               <button
