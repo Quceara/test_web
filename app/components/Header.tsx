@@ -2,7 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-export default function Header() {
+type HeaderProps = {
+  onExpire?: () => void;
+};
+
+export default function Header({ onExpire }: HeaderProps) {
   const [secondsLeft, setSecondsLeft] = useState(120);
 
   useEffect(() => {
@@ -20,6 +24,12 @@ export default function Header() {
   }, [secondsLeft]);
 
   const isCritical = secondsLeft <= 30;
+
+  useEffect(() => {
+    if (secondsLeft === 0) {
+      onExpire?.();
+    }
+  }, [secondsLeft, onExpire]);
 
   return (
     <header className="fixed top-0 left-0 z-50 flex w-full flex-col items-center gap-1 bg-[#1D5B43] py-2">

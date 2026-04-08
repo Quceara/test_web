@@ -7,6 +7,7 @@ type TariffCardProps = {
   onClick: () => void;
   compact?: boolean;
   widthClassName?: string;
+  hideDiscounts?: boolean;
 };
 
 function formatPrice(value: number) {
@@ -20,6 +21,7 @@ export default function TariffCard({
   onClick,
   compact = false,
   widthClassName,
+  hideDiscounts = false,
 }: TariffCardProps) {
   const defaultWidthClass = compact ? "w-[240px] max-[1217px]:w-[748px]" : "w-[748px]";
 
@@ -32,7 +34,9 @@ export default function TariffCard({
       }`}
       onClick={onClick}
     >
-      <div className="absolute top-0 left-[50px] flex h-[39px] w-[64px] items-center justify-center rounded-b-[13px] max-[1217px]:rounded-b-[8px] max-[344px]:rounded-b-[6px] bg-[#FD5656] max-[1217px]:left-[233px] max-[1217px]:h-[27px] max-[1217px]:w-[48px] max-[344px]:left-[196px]">
+      <div
+        className={`absolute top-0 left-[50px] flex h-[39px] w-[64px] items-center justify-center rounded-b-[13px] bg-[#FD5656] transition-all duration-500 max-[1217px]:left-[233px] max-[1217px]:h-[27px] max-[1217px]:w-[48px] max-[1217px]:rounded-b-[8px] max-[344px]:left-[196px] max-[344px]:rounded-b-[6px] ${hideDiscounts ? "pointer-events-none -translate-y-2 opacity-0" : "translate-y-0 opacity-100"}`}
+      >
         <span className="font-['Gilroy'] text-[22px] max-[1217px]:text-[16px] max-[344px]:text-[13px] leading-[120%] font-medium text-white">-{discountPercent}%</span>
       </div>
       {tariff.is_best && (
@@ -46,7 +50,9 @@ export default function TariffCard({
           <span className={`font-["Montserrat"] ${tariff.is_best ? "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-[#FDB056]" : "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px]font-semibold text-white"}`}>
             {formatPrice(tariff.price)}
           </span>
-          <span className="font-['Montserrat'] text-[24px] max-[1217px]:text-[16px] max-[344px]:text-[14px] font-normal text-[#919191] line-through">
+          <span
+            className={`font-['Montserrat'] text-[24px] max-[1217px]:text-[16px] max-[344px]:text-[14px] font-normal text-[#919191] line-through transition-all duration-500 ${hideDiscounts ? "opacity-0" : "opacity-100"}`}
+          >
             {formatPrice(tariff.full_price)}
           </span>
         </div>

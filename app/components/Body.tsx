@@ -27,11 +27,16 @@ const periodOrder: Record<string, number> = {
   "1 неделя": 3,
 };
 
-export default function Body() {
+type BodyProps = {
+  timerExpired: boolean;
+};
+
+export default function Body({ timerExpired }: BodyProps) {
   const [tariffs, setTariffs] = useState<Tariff[]>([]);
   const [selectedTariffIndex, setSelectedTariffIndex] = useState<number | null>(null);
   const [isAgreementChecked, setIsAgreementChecked] = useState(false);
   const [showAgreementError, setShowAgreementError] = useState(false);
+  const [isBuyButtonBlinking, setIsBuyButtonBlinking] = useState(false);
   const firstTariff = tariffs[0];
   const lastThreeTariffs = tariffs.slice(1, 4);
 
@@ -90,6 +95,7 @@ export default function Body() {
                     tariff={firstTariff}
                     isSelected={isSelected}
                     discountPercent={discountPercent}
+                    hideDiscounts={timerExpired}
                     onClick={() => setSelectedTariffIndex(0)}
                     widthClassName="max-[1217px]:w-[343px] max-[344px]:w-[288px]"
                   />
@@ -107,6 +113,7 @@ export default function Body() {
                       tariff={tariff}
                       isSelected={isSelected}
                       discountPercent={discountPercent}
+                      hideDiscounts={timerExpired}
                       onClick={() => setSelectedTariffIndex(actualIndex)}
                       compact
                       widthClassName="w-[240px] max-[1217px]:w-[343px] max-[344px]:w-[288px]"
@@ -151,12 +158,15 @@ export default function Body() {
               </div>
               <button
                 type="button"
-                className="cursor-pointer mt-[2px] flex w-[352px] max-[1217px]:w-[343px] max-[1217px]:h-[63px] max-[344px]:h-[55px] max-[344px]:w-[288px] h-[66px] bg-[#FDB056] items-center justify-center gap-2 rounded-[20px]"
+                className={`mt-[2px] flex h-[66px] w-[352px] cursor-pointer items-center justify-center gap-2 rounded-[20px] bg-[#FDB056] max-[1217px]:h-[63px] max-[1217px]:w-[343px] max-[344px]:h-[55px] max-[344px]:w-[288px] ${isBuyButtonBlinking ? "animate-pulse" : ""}`}
                 onClick={() => {
                   if (!isAgreementChecked) {
                     setShowAgreementError(true);
                     return;
                   }
+
+                  setIsBuyButtonBlinking(true);
+                  setTimeout(() => setIsBuyButtonBlinking(false), 900);
                 }}
               >
                 <span className="font-['Montserrat'] text-[20px] max-[1217px]:text-[18px] leading-[130%] font-bold text-[#191E1F]">
