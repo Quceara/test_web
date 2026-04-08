@@ -46,7 +46,7 @@ export default function TariffCard({
           <span className="text-[#FDB056] text-[22px] max-[1217px]:text-[16px] max-[344px]:text-[13px]">хит!</span>
         </div>
       )}
-      <div className="flex flex-col items-center gap-[16px]">
+      <div className="flex flex-col items-center max-[1217px]:items-start gap-[16px]">
         <span className="text-[26px] leading-[120%] font-medium text-white max-[1217px]:text-[18px] max-[344px]:text-[16px]">{tariff.period}</span>
         <div className="flex flex-col items-end">
           <span className={`font-["Montserrat"] ${isSelected ? "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-[#FDB056]" : "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-white"}`}>
