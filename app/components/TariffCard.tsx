@@ -1,0 +1,59 @@
+import type { Tariff } from "./Body";
+
+type TariffCardProps = {
+  tariff: Tariff;
+  isSelected: boolean;
+  discountPercent: number;
+  onClick: () => void;
+  compact?: boolean;
+  widthClassName?: string;
+};
+
+function formatPrice(value: number) {
+  return `${value.toLocaleString("ru-RU")} ₽`;
+}
+
+export default function TariffCard({
+  tariff,
+  isSelected,
+  discountPercent,
+  onClick,
+  compact = false,
+  widthClassName,
+}: TariffCardProps) {
+  const defaultWidthClass = compact ? "w-[240px] max-[1217px]:w-[748px]" : "w-[748px]";
+
+  return (
+    <div
+      className={`relative cursor-pointer select-none rounded-[34px] border-2 bg-[#313637] ${isSelected ? "border-[#FDB056]" : "border-[#484D4E]"} ${
+        compact
+          ? `flex flex-col items-center justify-center gap-10 pt-[70px] pb-[23px] max-[1217px]:flex-row max-[1217px]:items-center max-[1217px]:justify-center max-[1217px]:pt-[34px] max-[1217px]:pb-[30px] ${widthClassName ?? defaultWidthClass}`
+          : `flex items-center justify-center gap-10 pt-[34px] pb-[30px] ${widthClassName ?? defaultWidthClass}`
+      }`}
+      onClick={onClick}
+    >
+      <div className="absolute top-0 left-[50px] flex h-[39px] w-[64px] items-center justify-center rounded-b-[13px] max-[1217px]:rounded-b-[8px] max-[344px]:rounded-b-[6px] bg-[#FD5656] max-[1217px]:left-[233px] max-[1217px]:h-[27px] max-[1217px]:w-[48px] max-[344px]:left-[196px]">
+        <span className="font-['Gilroy'] text-[22px] max-[1217px]:text-[16px] max-[344px]:text-[13px] leading-[120%] font-medium text-white">-{discountPercent}%</span>
+      </div>
+      {tariff.is_best && (
+        <div className="absolute top-2.5 right-[20px] max-[1217px]:right-[14px]  flex h-[29px] w-[60px] max-[1217px]:w-[34px] max-[1217px]:h-[21px] max-[344px]:w-[28px] max-[344px]:h-[17px] items-center justify-center">
+          <span className="text-[#FDB056] text-[22px] max-[1217px]:text-[16px] max-[344px]:text-[13px]">хит!</span>
+        </div>
+      )}
+      <div className="flex flex-col items-center gap-[16px]">
+        <span className="text-[26px] leading-[120%] font-medium text-white max-[1217px]:text-[18px] max-[344px]:text-[16px]">{tariff.period}</span>
+        <div className="flex flex-col items-end">
+          <span className={`font-["Montserrat"] ${tariff.is_best ? "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-[#FDB056]" : "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px]font-semibold text-white"}`}>
+            {formatPrice(tariff.price)}
+          </span>
+          <span className="font-['Montserrat'] text-[24px] max-[1217px]:text-[16px] max-[344px]:text-[14px] font-normal text-[#919191] line-through">
+            {formatPrice(tariff.full_price)}
+          </span>
+        </div>
+      </div>
+      <div className={compact ? "w-[204px] max-[1217px]:w-[120px]" : "w-[328px] max-[1217px]:w-[120px]"}>
+        <span className="font-['Montserrat'] text-[16px] max-[1217px]:text-[14px] leading-[130%] font-normal text-white">{tariff.text}</span>
+      </div>
+    </div>
+  );
+}
