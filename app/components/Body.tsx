@@ -31,12 +31,33 @@ type BodyProps = {
   timerExpired: boolean;
 };
 
+type TariffSkeletonProps = {
+  compact?: boolean;
+  widthClassName?: string;
+};
+
+function TariffSkeleton({ compact = false, widthClassName }: TariffSkeletonProps) {
+  const defaultWidthClass = compact ? "w-[240px] max-[1217px]:w-[343px] max-[344px]:w-[288px]" : "max-[1217px]:w-[343px] max-[344px]:w-[288px]";
+
+  return (
+    <div
+      className={`relative overflow-hidden rounded-[34px] border-2 border-[#484D4E] bg-[#313637] ${compact ? "flex flex-col items-center justify-center gap-10 pt-[70px] pb-[23px] max-[1217px]:flex-row max-[1217px]:pt-[34px] max-[1217px]:pb-[30px]" : "flex items-center justify-center gap-10 pt-[34px] pb-[30px]"} ${widthClassName ?? defaultWidthClass}`}
+    >
+      <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-[#3B4041] via-[#4A5052] to-[#3B4041]" />
+      <div className="relative z-10 h-[40px] w-[140px] rounded-[10px] bg-[#2A2F30]" />
+      <div className="relative z-10 h-[64px] w-[170px] rounded-[12px] bg-[#2A2F30]" />
+      <div className={`relative z-10 rounded-[12px] bg-[#2A2F30] ${compact ? "h-[56px] w-[120px]" : "h-[56px] w-[220px]"}`} />
+    </div>
+  );
+}
+
 export default function Body({ timerExpired }: BodyProps) {
   const [tariffs, setTariffs] = useState<Tariff[]>([]);
   const [selectedTariffIndex, setSelectedTariffIndex] = useState<number | null>(null);
   const [isAgreementChecked, setIsAgreementChecked] = useState(false);
   const [showAgreementError, setShowAgreementError] = useState(false);
   const [isBuyButtonBlinking, setIsBuyButtonBlinking] = useState(false);
+  const hasTariffs = tariffs.length > 0;
   const firstTariff = tariffs[0];
   const lastThreeTariffs = tariffs.slice(1, 4);
 
@@ -85,7 +106,7 @@ export default function Body({ timerExpired }: BodyProps) {
           <div className="flex  items-center justify-between max-[1217px]:flex-col ">
             <img className="h-[767px] w-[381px] max-[1217px]:h-[250px] max-[1217px]:w-[124px] max-[344px]:h-[200px] max-[344px]:w-[99px]" src="/image/img.png" alt="накачанный мужик" />
             <div className="flex flex-col gap-[14px] max-[344px]:w-[288px]">
-              {firstTariff && (() => {
+              {hasTariffs && firstTariff ? (() => {
                 const isSelected = selectedTariffIndex === 0; 
                 const discountPercent = getDiscountPercent(firstTariff.price, firstTariff.full_price);
 
@@ -100,9 +121,11 @@ export default function Body({ timerExpired }: BodyProps) {
                     widthClassName="max-[1217px]:w-[343px] max-[344px]:w-[288px]"
                   />
                 );
-              })()}
+              })() : (
+                <TariffSkeleton widthClassName="w-[748px] max-[1217px]:w-[343px] max-[344px]:w-[288px]" />
+              )}
               <div className="flex gap-[14px] max-[1217px]:flex-col max-[344px]:w-[288px]">
-                {lastThreeTariffs.map((tariff, index) => {
+                {hasTariffs ? lastThreeTariffs.map((tariff, index) => {
                   const actualIndex = index + 1;
                   const isSelected = selectedTariffIndex === actualIndex;
                   const discountPercent = getDiscountPercent(tariff.price, tariff.full_price);
@@ -119,7 +142,13 @@ export default function Body({ timerExpired }: BodyProps) {
                       widthClassName="w-[240px] max-[1217px]:w-[343px] max-[344px]:w-[288px]"
                     />
                   );
-                })}
+                }) : (
+                  <>
+                    <TariffSkeleton compact widthClassName="w-[240px] max-[1217px]:w-[343px] max-[344px]:w-[288px]" />
+                    <TariffSkeleton compact widthClassName="w-[240px] max-[1217px]:w-[343px] max-[344px]:w-[288px]" />
+                    <TariffSkeleton compact widthClassName="w-[240px] max-[1217px]:w-[343px] max-[344px]:w-[288px]" />
+                  </>
+                )}
               </div>
               <div className="flex rounded-[20px] items-start justify-center gap-2 py-[18px] w-[499px] 
               max-[1217px]:w-[343px] 

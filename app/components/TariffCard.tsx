@@ -35,7 +35,7 @@ export default function TariffCard({
       onClick={onClick}
     >
       <div
-        className={`absolute top-0 left-[50px] flex h-[39px] w-[64px] items-center justify-center rounded-b-[13px] bg-[#FD5656] transition-all duration-500 max-[1217px]:left-[233px] max-[1217px]:h-[27px] max-[1217px]:w-[48px] max-[1217px]:rounded-b-[8px] max-[344px]:left-[196px] max-[344px]:rounded-b-[6px] ${hideDiscounts ? "pointer-events-none -translate-y-2 opacity-0" : "translate-y-0 opacity-100"}`}
+        className={`absolute top-0 left-[50px] flex h-[39px] w-[64px] items-center justify-center rounded-b-[13px] bg-[#FD5656] transition-all duration-500 max-[1217px]:left-[233px] max-[1217px]:h-[27px] max-[1217px]:w-[48px] max-[1217px]:rounded-b-[8px] max-[344px]:left-[190px] max-[344px]:rounded-b-[6px] ${hideDiscounts ? "pointer-events-none -translate-y-2 opacity-0" : "translate-y-0 opacity-100"}`}
       >
         <span className="font-['Gilroy'] text-[22px] max-[1217px]:text-[16px] max-[344px]:text-[13px] leading-[120%] font-medium text-white">-{discountPercent}%</span>
       </div>
