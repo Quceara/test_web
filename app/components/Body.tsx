@@ -164,7 +164,7 @@ export default function Body({ timerExpired }: BodyProps) {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-2 w-[649px] max-[1217px]:w-[339px] max-[1217px]:w-[292px] mt-[16px]">
+              <div className="mt-[16px] flex w-[649px] items-center justify-center gap-2 max-[1217px]:w-[339px] max-[344px]:w-[292px]">
                 <label className="cursor-pointer">
                   <input
                     type="checkbox"

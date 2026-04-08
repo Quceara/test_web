@@ -8,7 +8,7 @@ export default function Home() {
   const [timerExpired, setTimerExpired] = useState(false);
 
   return (
-    <main className="">
+    <main className="overflow-x-hidden">
       <Header onExpire={() => setTimerExpired(true)} />
       <Body timerExpired={timerExpired} />
     </main>
