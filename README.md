@@ -1,3 +1,58 @@
+# Test Assignment - Landing Page (Next.js)
+
+Это выполненное тестовое задание: адаптивный лендинг с выбором тарифа, таймером и валидацией согласия перед покупкой.
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS v4
+
+## Что реализовано
+
+- Компонентная структура:
+  - `Header`
+  - `Body`
+  - `TariffCard`
+- Загрузка тарифов с API:
+  - `https://t-core.fit-hub.pro/Test/GetTariffs`
+- Сортировка тарифов в порядке:
+  - `Навсегда` -> `3 месяца` -> `1 месяц` -> `1 неделя`
+- Рендер карточек из данных API
+- Выбор активной карточки тарифа
+- Валидация согласия перед покупкой:
+  - если чекбокс не отмечен, при клике `Купить` чекбокс выделяется красным
+- Закрепленный хедер с таймером:
+  - старт `02:00`
+  - на последних `30` сек таймер мигает и становится красным
+- Типографика по макету:
+  - Montserrat
+  - Raleway (таймер)
+  - Gilroy (текст скидки)
+
+## Структура проекта
+
+- `app/page.tsx` - сборка страницы
+- `app/components/Header.tsx` - верхняя плашка и таймер
+- `app/components/Body.tsx` - основной контент и логика страницы
+- `app/components/TariffCard.tsx` - карточка тарифа
+- `app/globals.css` - глобальные стили и подключение шрифтов
+
+## Запуск
+
+```bash
+npm install
+npm run dev
+```
+
+Открыть: [http://localhost:3000](http://localhost:3000)
+
+## Примечание по Gilroy
+
+Для корректного применения Gilroy нужен файл:
+
+- `public/fonts/Gilroy-Medium.woff2`
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
