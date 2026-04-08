@@ -60,7 +60,7 @@ export default function TariffCard({
         </div>
       </div>
       <div className={compact ? "w-[204px] max-[1217px]:w-[120px]" : "w-[328px] max-[1217px]:w-[120px]"}>
-        <span className="font-['Montserrat'] text-[16px] max-[1217px]:text-[14px] leading-[130%] font-normal text-white">{tariff.text}</span>
+        <span className="block font-['Montserrat'] text-[16px] max-[1217px]:text-[14px] leading-[130%] font-normal text-white">{tariff.text}</span>
       </div>
     </button>
   );

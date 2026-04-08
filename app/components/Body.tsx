@@ -159,7 +159,7 @@ export default function Body({ timerExpired }: BodyProps) {
                   <path d="M12 23C12.8284 23 13.5 22.3284 13.5 21.5C13.5 20.6716 12.8284 20 12 20C11.1716 20 10.5 20.6716 10.5 21.5C10.5 22.3284 11.1716 23 12 23Z" fill="#FDB056"/>
                 </svg>
                 <div className="w-[427px] max-[1217px]:w-[267px] max-[344px]:w-[218px] ">
-                  <span className="font-['Montserrat'] text-[16px] max-[1217px]:text-[12px] leading-[130%] font-normal text-white">
+                  <span className="block font-['Montserrat'] text-[16px] max-[1217px]:text-[12px] leading-[130%] font-normal text-white">
                     Следуя плану на 3 месяца и более, люди получают в 2 раза лучший результат, чем за 1 месяц
                   </span>
                 </div>
@@ -210,7 +210,7 @@ export default function Body({ timerExpired }: BodyProps) {
                 </span>
               </button>
               <div className="w-[748px] max-[1217px]:w-[343px] max-[344px]:w-[288px]">
-                  <span className="font-['Montserrat'] text-[14px] max-[1217px]:text-[10px] leading-[120%] max-[1217px]:leading-[1%] font-normal text-[#9B9B9B]">
+                  <span className=" block font-['Montserrat'] text-[14px] max-[1217px]:text-[10px] leading-[120%] max-[1217px]:leading-[110%] font-normal text-[#9B9B9B]">
                     Нажимая кнопку «Купить», Пользователь соглашается на разовое списание денежных средств для получения пожизненного доступа к приложению. Пользователь соглашается, что данные кредитной/дебетовой карты будут сохранены для осуществления покупок дополнительных услуг сервиса в случае желания пользователя.
                   </span>
               </div>
@@ -220,7 +220,7 @@ export default function Body({ timerExpired }: BodyProps) {
             <div className="rounded-[30px] px-[30px] max-[1217px]:px-[20px] py-[17px] border-[1px] border-[#81FE95]">
               <span className="text-[#81FE95] text-[28px] max-[1217px]:text-[18px] max-[344px]:text-[14px] leading-[120%] font-medium">гарантия возврата 30 дней</span>
             </div>
-            <span className="font-['Montserrat'] text-[24px] max-[1217px]:text-[14px] max-[344px]:text-[13px] leading-[130%] font-normal text-[#DCDCDC]">
+            <span className="block font-['Montserrat'] text-[24px] max-[1217px]:text-[14px] max-[344px]:text-[13px] leading-[130%] font-normal text-[#DCDCDC]">
               Мы уверены, что наш план сработает для тебя и ты увидишь видимые результаты уже через 4 недели! Мы даже готовы полностью вернуть твои деньги в течение 30 дней с момента покупки, если ты не получишь видимых результатов.
             </span>
           </div>
