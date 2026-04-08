@@ -26,7 +26,9 @@ export default function TariffCard({
   const defaultWidthClass = compact ? "w-[240px] max-[1217px]:w-[748px]" : "w-[748px]";
 
   return (
-    <div
+    <button
+      type="button"
+      aria-pressed={isSelected}
       className={`relative cursor-pointer select-none rounded-[34px] border-2 bg-[#313637] ${isSelected ? "border-[#FDB056]" : "border-[#484D4E]"} ${
         compact
           ? `flex flex-col items-center justify-center gap-10 pt-[70px] pb-[23px] max-[1217px]:flex-row max-[1217px]:items-center max-[1217px]:justify-center max-[1217px]:pt-[34px] max-[1217px]:pb-[30px] ${widthClassName ?? defaultWidthClass}`
@@ -60,6 +62,6 @@ export default function TariffCard({
       <div className={compact ? "w-[204px] max-[1217px]:w-[120px]" : "w-[328px] max-[1217px]:w-[120px]"}>
         <span className="font-['Montserrat'] text-[16px] max-[1217px]:text-[14px] leading-[130%] font-normal text-white">{tariff.text}</span>
       </div>
-    </div>
+    </button>
   );
 }

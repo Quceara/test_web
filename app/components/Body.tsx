@@ -165,21 +165,27 @@ export default function Body({ timerExpired }: BodyProps) {
                 </div>
               </div>
               <div className="flex items-center justify-center gap-2 w-[649px] max-[1217px]:w-[339px] max-[1217px]:w-[292px] mt-[16px]">
-                <button
-                  type="button"
-                  aria-pressed={isAgreementChecked}
-                  className={`flex size-[32px] max-[1217px]:size-[30px] cursor-pointer items-center justify-center rounded-[3px] border-[1.5px] ${showAgreementError ? "border-[#FD5656]" : "border-[#919191]"}`}
-                  onClick={() => {
-                    setIsAgreementChecked((prev) => !prev);
-                    setShowAgreementError(false);
-                  }}
-                >
-                  {isAgreementChecked && (
-                    <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M19.4727 0.570312C19.5464 0.491786 19.6674 0.477847 19.7568 0.533203L19.793 0.561523C19.8834 0.647109 19.8879 0.791255 19.8018 0.882812L7.43848 13.9736C7.39461 14.02 7.33545 14.0458 7.27344 14.0459H7.27148C7.22257 14.0452 7.1766 14.0286 7.13867 14.001L7.10352 13.9697L0.558594 6.69727C0.474798 6.60415 0.482343 6.46058 0.575195 6.37695C0.667705 6.29371 0.811212 6.29874 0.898438 6.39453L6.91406 13.0791L7.27734 13.4824L7.64941 13.0879L19.4717 0.571289L19.4727 0.570312Z" fill="#424748" stroke="#FDB056"/>
-                    </svg>
-                  )}
-                </button>
+                <label className="cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={isAgreementChecked}
+                    onChange={(event) => {
+                      setIsAgreementChecked(event.target.checked);
+                      setShowAgreementError(false);
+                    }}
+                    className="sr-only"
+                  />
+                  <span
+                    className={`flex size-[32px] max-[1217px]:size-[30px] items-center justify-center rounded-[3px] border-[1.5px] ${showAgreementError ? "border-[#FD5656]" : "border-[#919191]"}`}
+                    aria-hidden="true"
+                  >
+                    {isAgreementChecked && (
+                      <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.4727 0.570312C19.5464 0.491786 19.6674 0.477847 19.7568 0.533203L19.793 0.561523C19.8834 0.647109 19.8879 0.791255 19.8018 0.882812L7.43848 13.9736C7.39461 14.02 7.33545 14.0458 7.27344 14.0459H7.27148C7.22257 14.0452 7.1766 14.0286 7.13867 14.001L7.10352 13.9697L0.558594 6.69727C0.474798 6.60415 0.482343 6.46058 0.575195 6.37695C0.667705 6.29371 0.811212 6.29874 0.898438 6.39453L6.91406 13.0791L7.27734 13.4824L7.64941 13.0879L19.4717 0.571289L19.4727 0.570312Z" fill="#424748" stroke="#FDB056"/>
+                      </svg>
+                    )}
+                  </span>
+                </label>
                 <span className="font-['Montserrat'] text-[16px] max-[1217px]:text-[12px]  max-[1217px]:w-[297px] max-[344px]:w-[252px] leading-[110%] font-normal text-[#CDCDCD]">
                   Я согласен <Link className="underline" href="/policy">
                     с офертой рекуррентных платежей и Политикой конфиденциальности 
