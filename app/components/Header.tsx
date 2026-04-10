@@ -7,7 +7,7 @@ type HeaderProps = {
 };
 
 export default function Header({ onExpire }: HeaderProps) {
-  const [secondsLeft, setSecondsLeft] = useState(120);
+  const [secondsLeft, setSecondsLeft] = useState(10);
 
   useEffect(() => {
     const timerId = setInterval(() => {

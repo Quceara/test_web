@@ -24,6 +24,7 @@ export default function TariffCard({
   hideDiscounts = false,
 }: TariffCardProps) {
   const defaultWidthClass = compact ? "w-[240px] max-[1217px]:w-[748px]" : "w-[748px]";
+  const mainPrice = hideDiscounts ? tariff.full_price : tariff.price;
 
   return (
     <button
@@ -50,7 +51,7 @@ export default function TariffCard({
         <span className="text-[26px] leading-[120%] font-medium text-white max-[1217px]:text-[18px] max-[344px]:text-[16px]">{tariff.period}</span>
         <div className="flex flex-col items-end">
           <span className={`font-["Montserrat"] ${isSelected ? "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-[#FDB056]" : "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-white"}`}>
-            {formatPrice(tariff.price)}
+            {formatPrice(mainPrice)}
           </span>
           <span
             className={`font-['Montserrat'] text-[24px] max-[1217px]:text-[16px] max-[344px]:text-[14px] font-normal text-[#919191] line-through transition-all duration-500 ${hideDiscounts ? "opacity-0" : "opacity-100"}`}
