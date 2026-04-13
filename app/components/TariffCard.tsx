@@ -30,7 +30,7 @@ export default function TariffCard({
     <button
       type="button"
       aria-pressed={isSelected}
-      className={`relative cursor-pointer select-none rounded-[34px] border-2 bg-[#313637] ${isSelected ? "border-[#FDB056]" : "border-[#484D4E]"} ${
+      className={`relative cursor-pointer select-none max-[344px]:gap-[15px] rounded-[34px] border-2 bg-[#313637] ${isSelected ? "border-[#FDB056]" : "border-[#484D4E]"} ${
         compact
           ? `flex flex-col items-center justify-center gap-10 pt-[70px] pb-[23px] max-[1217px]:flex-row max-[1217px]:items-center max-[1217px]:justify-center max-[1217px]:pt-[34px] max-[1217px]:pb-[30px] ${widthClassName ?? defaultWidthClass}`
           : `flex items-center justify-center gap-10 pt-[34px] pb-[30px] ${widthClassName ?? defaultWidthClass}`
@@ -50,7 +50,7 @@ export default function TariffCard({
       <div className="flex flex-col items-center max-[1217px]:items-start gap-[16px]">
         <span className="text-[26px] leading-[120%] font-medium text-white max-[1217px]:text-[18px] max-[344px]:text-[16px]">{tariff.period}</span>
         <div className="flex flex-col items-end">
-          <span className={`font-["Montserrat"] ${isSelected ? "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-[#FDB056]" : "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-white"}`}>
+          <span className={`font-["Montserrat"] ${isSelected ? "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] max-[344px]:text-nowrap font-semibold text-[#FDB056]" : "text-[50px] max-[1217px]:text-[34px] max-[344px]:text-[30px] font-semibold text-white"}`}>
             {formatPrice(mainPrice)}
           </span>
           <span
